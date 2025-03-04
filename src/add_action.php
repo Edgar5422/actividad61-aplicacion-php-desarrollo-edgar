@@ -1,5 +1,5 @@
 <?php
-//Incluye fichero con parámetros de conexión a la base de datos
+// Incluye fichero con parámetros de conexión a la base de datos
 include_once("config.php");
 ?>
 
@@ -8,12 +8,12 @@ include_once("config.php");
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">	
-	<title>Alta empleado/a</title>
+	<title>Alta Piloto/Copiloto</title>
 </head>
 <body>
 <div>
 	<header>
-		<h1>ELECTROSHOP S.L.</h1>
+		<h1>Plantilla WRC 2025</h1>
 	</header>
 	<main>
 
@@ -25,61 +25,63 @@ Los datos del formulario se acceden por el método: POST
 
 if(isset($_POST['inserta'])) 
 {
-/*Se obtienen los datos del empleado (nombre, apellido, edad y puesto) a partir del formulario de alta (name, surname, age y job)  por el método POST.
-Se envía a través del body del HTTP Request. No aparecen en la URL como era el caso del otro método de envío de datos: GET
-Recuerda que   existen dos métodos con los que el navegador puede enviar información al servidor:
-1.- Método HTTP GET. Información se envía de forma visible. A través de la URL (header HTTP Request )
-En PHP los datos se administran con el array asociativo $_GET. En nuestro caso el dato del empleado se obiene a través de la clave: $_GET['idempleado']
-2.- Método HTTP POST. Información se envía de forma no visible. A través del cuerpo del HTTP Request 
-PHP proporciona el array asociativo $_POST para acceder a la información enviada.
+/* Se obtienen los datos del piloto y copiloto (nombre, apellido, nacionalidad) 
+   a partir del formulario de alta, usando el método POST.
 */
 
-	$name = $mysqli->real_escape_string($_POST['name']);
-	$surname = $mysqli->real_escape_string($_POST['surname']);
-	$age = $mysqli->real_escape_string($_POST['age']);
-	$job = $mysqli->real_escape_string($_POST['job']);
+	$pilot_name = $mysqli->real_escape_string($_POST['nombre_piloto']);
+	$pilot_surname = $mysqli->real_escape_string($_POST['apellido_piloto']);
+	$pilot_nationality = $mysqli->real_escape_string($_POST['nacionalidad_piloto']);
+	$copilot_name = $mysqli->real_escape_string($_POST['nombre_copiloto']);
+	$copilot_surname = $mysqli->real_escape_string($_POST['apellido_copiloto']);
+	$copilot_nationality = $mysqli->real_escape_string($_POST['nacionalidad_copiloto']);
 
-/*Con mysqli_real_scape_string protege caracteres especiales en una cadena para ser usada en una sentencia SQL.
-Esta función es usada para crear una cadena SQL legal que se puede usar en una sentencia SQL. 
-Los caracteres codificados son NUL (ASCII 0), \n, \r, \, ', ", y Control-Z.
-Ejemplo: Entrada sin escapar: "O'Reilly" contiene una comilla simple (').
-Escapado con mysqli_real_escape_string(): Se convierte en "O\'Reilly", evitando que la comilla se interprete como el fin de una cadena en SQL.
+/* Con mysqli_real_escape_string protegemos caracteres especiales en una cadena 
+   para evitar inyecciones SQL y errores en la consulta.
 */
 
-//Se comprueba si existen campos del formulario vacíos
-	if(empty($name) || empty($surname) || empty($age) || empty($job) ) 
+// Se comprueba si existen campos del formulario vacíos
+	if(empty($pilot_name) || empty($pilot_surname) || empty($pilot_nationality) || empty($copilot_name) || empty($copilot_surname) || empty($copilot_nationality)) 
 	{
-		if(empty($name)) {
-			echo "<div>Campo nombre vacío.</div>";
+		if(empty($pilot_name)) {
+			echo "<div>Campo Nombre Piloto vacío.</div>";
 		}
 
-		if(empty($surname)) {
-			echo "<div>Campo apellido vacío</div>";
+		if(empty($pilot_surname)) {
+			echo "<div>Campo Apellido Piloto vacío</div>";
 		}
 
-		if(empty($age)) {
-			echo "<div>Campo edad vacío.</div>";
+		if(empty($pilot_nationality)) {
+			echo "<div>Campo Nacionalidad Piloto vacío.</div>";
 		}
 
-		if(empty($job)) {
-			echo "<div>Campo puesto vacío.</div>";
+		if(empty($copilot_name)) {
+			echo "<div>Campo Nombre Copiloto vacío.</div>";
 		}
-//Enlace a la página anterior
-		//Se cierra la conexión
+
+		if(empty($copilot_surname)) {
+			echo "<div>Campo Apellido Copiloto vacío.</div>";
+		}
+
+		if(empty($copilot_nationality)) {
+			echo "<div>Campo Nacionalidad Copiloto vacío.</div>";
+		}
+		
+		// Enlace a la página anterior
 		$mysqli->close();
-		echo "<a href='javascript:self.history.back();'>Volver atras</a>";
-	} //fin si
-	else //Sino existen campos de formulario vacíos se procede al alta del nuevo registro
+		echo "<a href='javascript:self.history.back();'>Volver atrás</a>";
+	} 
+	else // Si no existen campos de formulario vacíos, se procede al alta del nuevo registro
 	{
-//Se ejecuta una sentencia SQL. Inserta (da de alta) el nuevo registro: insert.
-		$result = $mysqli->query("INSERT INTO empleados (nombre, apellido, edad, puesto) VALUES ('$name', '$surname', '$age', '$job')");	
-		//Se cierra la conexión
+		// Se ejecuta una sentencia SQL para insertar un nuevo piloto/copiloto
+		$result = $mysqli->query("INSERT INTO pilotos_copilotos (nombre_piloto, apellido_piloto, nacionalidad_piloto, nombre_copiloto, apellido_copiloto, nacionalidad_copiloto) 
+		VALUES ('$pilot_name', '$pilot_surname', '$pilot_nationality', '$copilot_name', '$copilot_surname', '$copilot_nationality')");	
+
+		// Se cierra la conexión
 		$mysqli->close();
 		echo "<div>Registro añadido correctamente...</div>";
 		echo "<a href='index.php'>Ver resultado</a>";
-		//Se redirige a la página principal: index.php
-		//header("Location:index.php");
-	}//fin sino
+	}// fin sino
 }
 ?>
 
@@ -89,3 +91,4 @@ Escapado con mysqli_real_escape_string(): Se convierte en "O\'Reilly", evitando 
 </div>
 </body>
 </html>
+

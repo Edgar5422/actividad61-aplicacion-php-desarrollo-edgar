@@ -4,49 +4,42 @@ include("config.php");
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Baja empleado/a</title>
+    <title>Baja de Piloto/Copiloto</title>
 </head>
 <body>
 <div>
 	<header>
-		<h1>ELECTROSHOP S.L.</h1>
+		<h1>Plantilla WRC 2025</h1>
 	</header>
 	<main>
 
 <?php
-/*Obtiene el id del registro del empleado a eliminar, idempleado, a partir de su URL. Se recibe el dato utilizando el método: GET 
-Recuerda que   existen dos métodos con los que el navegador puede enviar información al servidor:
-1.- Método HTTP GET. Información se envía de forma visible. A través de la URL (header HTTP Request )
-En PHP los datos se administran con el array asociativo $_GET. En nuestro caso el dato del empleado se obiene a través de la clave: $_GET['idempleado']
-2.- Método HTTP POST. Información se envía de forma no visible. A través del cuerpo del HTTP Request 
-PHP proporciona el array asociativo $_POST para acceder a la información enviada.
-*/
+/* Obtiene el id del piloto/copiloto a eliminar desde la URL, utilizando el método GET */
 
-//Recoge el id del empleado a eliminar a través de la clave idempleado del array asociativo $_GET y lo almacena en la variable idempleado
-$idempleado = $_GET['idempleado'];
+$idpiloto = $_GET['idpiloto'];
 
-//Con mysqli_real_scape_string protege caracteres especiales en una cadena para ser usada en una sentencia SQL.
-$idempleado = $mysqli->real_escape_string($idempleado);
+// Protege caracteres especiales en la cadena SQL
+$idpiloto = $mysqli->real_escape_string($idpiloto);
 
-//Se realiza el borrado del registro: delete.
-$result = $mysqli->query("DELETE FROM empleados WHERE id = $idempleado");
+// Se ejecuta la eliminación del registro
+$result = $mysqli->query("DELETE FROM pilotos_copilotos WHERE id = $idpiloto");
 
-//Se cierra la conexión de base de datos previamente abierta
+// Se cierra la conexión de la base de datos
 $mysqli->close();
-echo "<div>Registro borrado correctamente...</div>";
+
+echo "<div>Registro del piloto/copiloto eliminado correctamente...</div>";
 echo "<a href='index.php'>Ver resultado</a>";
-//Se redirige a la página principal: index.php
+
+// Se redirige a la página principal después de eliminar el registro
 //header("Location:index.php");
 ?>
-
-    <!--<div>Registro borrado correctamente</div>
-	<a href='index.php'>Ver resultado</a>-->
-    </main>
+</main>
 </div>
 </body>
 </html>
+
 

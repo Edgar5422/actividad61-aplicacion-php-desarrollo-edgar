@@ -1,51 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alta empleado/a</title>
+    <title>Alta Piloto y Copiloto</title>
 </head>
 <body>
 <div>
 	<header>
-		<h1>ELECTROSHOP S.L.</h1>
+		<h1>Registro de Pilotos y Copilotos WRC</h1>
 	</header>
 	<main>				
 	<ul>
 		<li><a href="index.php">Inicio</a></li>
 		<li><a href="add.html">Alta</a></li>
 	</ul>
-	<h2>Alta empleado/a</h2>
-<!--FORMULARIO DE ALTA. Al hacer click en el botón Agregar, llama a la página: add.php (form action="add.php")
-La página: add.php se encargará de proceder a la inserción del registro en la tabla de empleados
--->
+	<h2>Alta de Pilotos y Copilotos</h2>
 
 	<form action="add_action.php" method="post">
 		<div>
-			<label for="name">Nombre</label>
-			<input type="text" name="name" id="name" placeholder="nombre" required>
+			<label for="nombre_piloto">Nombre Piloto</label>
+			<input type="text" name="nombre_piloto" id="nombre_piloto" placeholder="Ej: Sébastien" required>
 		</div>
 
 		<div>
-			<label for="surname">Apellido</label>
-			<input type="text" name="surname" id="surname" placeholder="apellido" required>
+			<label for="apellido_piloto">Apellido Piloto</label>
+			<input type="text" name="apellido_piloto" id="apellido_piloto" placeholder="Ej: Ogier" required>
 		</div>
 
 		<div>
-			<label for="age">Edad</label>
-			<input type="number" name="age" id="age" placeholder="edad" required>
+			<label for="nacionalidad_piloto">Nacionalidad Piloto</label>
+			<input type="text" name="nacionalidad_piloto" id="nacionalidad_piloto" placeholder="Ej: Francia" required>
 		</div>
 
 		<div>
-			<label for="job">Puesto</label>
-			<select name="job" id="job" placeholder="puesto" required>
-				<option value="" disabled selected>Seleccione un puesto</option>
-				<option value="Administrativo">Administrativo</option>
-				<option value="Contable">Contable</option>
-				<option value="Dependiente">Dependiente</option>
-				<option value="Gerente">Gerente</option>
-				<option value="Repartidor">Repartidor</option>
-			</select>	
+			<label for="nombre_copiloto">Nombre Copiloto</label>
+			<input type="text" name="nombre_copiloto" id="nombre_copiloto" placeholder="Ej: Julien" required>
+		</div>
+
+		<div>
+			<label for="apellido_copiloto">Apellido Copiloto</label>
+			<input type="text" name="apellido_copiloto" id="apellido_copiloto" placeholder="Ej: Ingrassia" required>
+		</div>
+
+		<div>
+			<label for="nacionalidad_copiloto">Nacionalidad Copiloto</label>
+			<input type="text" name="nacionalidad_copiloto" id="nacionalidad_copiloto" placeholder="Ej: Francia" required>
 		</div>
 
 		<div>
@@ -56,7 +56,7 @@ La página: add.php se encargará de proceder a la inserción del registro en la
 	
 	</main>	
 	<footer>
-	Created by the IES Miguel Herrero team &copy; 2025
+		Created by the IES Miguel Herrero team &copy; 2025
   	</footer>
 </div>
 </body>
