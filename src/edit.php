@@ -25,7 +25,7 @@ include_once("config.php");
 
 <?php
 // Obtiene el id del piloto a modificar desde la URL utilizando el método GET
-$idpiloto = $_GET['idpiloto'];
+$idpiloto = $_GET['id'];
 
 // Protege caracteres especiales en la cadena para evitar inyección SQL
 $idpiloto = $mysqli->real_escape_string($idpiloto);
@@ -79,7 +79,7 @@ $mysqli->close();
 		</div>
 
 		<div>
-			<input type="hidden" name="idpiloto" value=<?php echo $idpiloto;?>>
+			<input type="hidden" name="id" value=<?php echo $idpiloto;?>>
 			<input type="submit" name="modifica" value="Guardar">
 			<input type="button" value="Cancelar" onclick="location.href='index.php'">
 		</div>

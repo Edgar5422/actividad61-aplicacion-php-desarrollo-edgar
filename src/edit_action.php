@@ -22,7 +22,7 @@ include_once("config.php");
 if(isset($_POST['modifica'])) {
 
 	// Se obtienen los datos del formulario mediante POST
-	$idpiloto = $mysqli->real_escape_string($_POST['idpiloto']);
+	$idpiloto = $mysqli->real_escape_string($_POST['id']);
 	$nombre_piloto = $mysqli->real_escape_string($_POST['nombre_piloto']);
 	$apellido_piloto = $mysqli->real_escape_string($_POST['apellido_piloto']);
 	$nacionalidad_piloto = $mysqli->real_escape_string($_POST['nacionalidad_piloto']);

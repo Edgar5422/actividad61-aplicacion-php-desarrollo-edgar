@@ -60,8 +60,8 @@ if ($resultado->num_rows > 0) {
 		echo "<td>".$fila['nacionalidad_copiloto']."</td>\n";
 		echo "<td>";
 		// Enlaces para editar y eliminar el registro
-		echo "<a href=\"edit.php?idpiloto=$fila[id]\">Edición</a>\n";
-		echo "<a href=\"delete.php?idpiloto=$fila[id]\" onClick=\"return confirm('¿Está seguro que desea eliminar este piloto y copiloto?')\" >Baja</a></td>\n";
+		echo "<a href=\"edit.php?id=$fila[id]\">Edición</a>\n";
+		echo "<a href=\"delete.php?id=$fila[id]\" onClick=\"return confirm('¿Está seguro que desea eliminar este piloto y copiloto?')\" >Baja</a></td>\n";
 		echo "</td>";
 		echo "</tr>\n";
 	}
