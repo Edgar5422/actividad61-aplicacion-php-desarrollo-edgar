@@ -20,7 +20,7 @@ include("config.php");
 <?php
 /* Obtiene el id del piloto/copiloto a eliminar desde la URL, utilizando el método GET */
 
-$idpiloto = $_GET['idpiloto'];
+$idpiloto = $_GET['id'];
 
 // Protege caracteres especiales en la cadena SQL
 $idpiloto = $mysqli->real_escape_string($idpiloto);
